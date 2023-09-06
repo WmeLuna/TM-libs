@@ -3,3 +3,4 @@
 
 typeof waitForElm != 'undefined' ? unsafeWindow.waitForElm = waitForElm : null;
 typeof reactProps != 'undefined' ? unsafeWindow.reactProps = reactProps : null;
+typeof simulateDragDrop != 'undefined' ? unsafeWindow.simulateDragDrop = simulateDragDrop : null;

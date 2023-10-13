@@ -82,7 +82,7 @@ const traceFunction = function traceFunction(name, f, mapper) {
         }
     };
 
-if (window[WEBPACK_CHUNK]) {
+if (typeof WEBPACK_CHUNK !== 'undefined' && window[WEBPACK_CHUNK]) {
     logger.info(`Patching ${WEBPACK_CHUNK}.push (was already existant, likely from cache!)`);
     _initWebpack(window[WEBPACK_CHUNK]);
     patchPush();

@@ -7,8 +7,9 @@
 // @require      https://raw.githubusercontent.com/WmeLuna/TM-libs/main/VenPatch.js
 // @grant        none
 
-let WEBPACK_CHUNK = Object.keys(window).find((key) => key.startsWith("webpackChunk"));
-console.log(WEBPACK_CHUNK)
+if (typeof WEBPACK_CHUNK === 'undefined') {
+    console.error('WEBPACK_CHUNK is undefined.\n to find it use: Object.keys(window).find((key) => key.startsWith("webpackChunk"));');
+}
 let cache, wreq, webpackChunk
 var traces = {}
 let IS_DEV = true

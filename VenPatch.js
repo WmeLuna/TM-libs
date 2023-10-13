@@ -2,14 +2,11 @@
 // ive modified vencords patching code to be used in tampermonkey scripts
 // patches work the same way as vencord except for each patch .plugin is required
 // @grant none MUST be enabled to use this as window would be different if not
-
+// you need to define WEBPACK_CHUNK, find it with Object.keys(window).find((key) => key.startsWith("webpackChunk"));
 // @require      https://cdn.jsdelivr.net/npm/diff/dist/diff.min.js
 // @require      https://raw.githubusercontent.com/WmeLuna/TM-libs/main/VenPatch.js
 // @grant        none
 
-if (typeof WEBPACK_CHUNK === 'undefined') {
-    console.error('WEBPACK_CHUNK is undefined.\n to find it use: Object.keys(window).find((key) => key.startsWith("webpackChunk"));');
-}
 let cache, wreq, webpackChunk
 var traces = {}
 let IS_DEV = true

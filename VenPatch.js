@@ -8,6 +8,7 @@
 // @grant        none
 
 let WEBPACK_CHUNK = Object.keys(window).find((key) => key.startsWith("webpackChunk"));
+console.log(WEBPACK_CHUNK)
 let cache, wreq, webpackChunk
 var traces = {}
 let IS_DEV = true

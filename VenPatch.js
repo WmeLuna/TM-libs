@@ -8,11 +8,49 @@
 // @require      https://raw.githubusercontent.com/WmeLuna/TM-libs/main/VenPatch.js
 // @grant        none
 
+class Logger {
+  static makeTitle(color, title) {
+    return ["%c %c %s ", "", `background: ${color}; color: black; font-weight: bold; border-radius: 5px;`, title];
+  }
+  constructor(name, color = "white") {
+    this.name = name
+    this.color = color
+  }
+  _log(level, levelColor, args, customFmt = "") {
+    console[level](
+      `%c Vencord %c %c ${this.name} ${customFmt}`,
+      `background: ${levelColor}; color: black; font-weight: bold; border-radius: 5px;`,
+      "",
+      `background: ${this.color}; color: black; font-weight: bold; border-radius: 5px;`,
+      ...args
+    )
+  }
+  log(...args) {
+    this._log("log", "#a6d189", args)
+  }
+  info(...args) {
+    this._log("info", "#a6d189", args)
+  }
+  error(...args) {
+    this._log("error", "#e78284", args)
+  }
+  errorCustomFmt(fmt, ...args) {
+    this._log("error", "#e78284", args, fmt)
+  }
+  warn(...args) {
+    this._log("warn", "#e5c890", args)
+  }
+  debug(...args) {
+    this._log("debug", "#eebebe", args)
+  }
+}
+
+
 function loadpatch(){
 let cache, wreq, webpackChunk
 var traces = {}
 let IS_DEV = true
-const logger = console
+const logger = new Logger("VenPatch", "#8caaee");
 function canonicalizeReplace(replace, pluginName) {
     const self = `Vencord.Plugins.plugins[${JSON.stringify(pluginName)}]`;
 
